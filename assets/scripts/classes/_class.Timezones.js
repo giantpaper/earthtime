@@ -11,6 +11,14 @@ export default class Timezones {
 		});
 		
 		this.tzList = list;
+		
+		this.labels = {
+			add: {
+				select: 'Add City/Region',
+				submit: 'Add',
+			},
+			changeHome: 'Make Home',
+		};
 	}
 	
 	newTZ (event) {
@@ -84,7 +92,7 @@ export default class Timezones {
 			let currentTime = this.convertTo12Hour(timezone.h, timezone.m);
 			let button_DELETE = `<button data-id="${timezone.name}" class="btn delete" title="Delete Timezone"></button>`;
 			let enabled = this.home === timezone.name ? 'disabled="disabled"' : '';
-			let button__HOME = `<button data-id="${timezone.name}" title="Make this home" ${enabled} class="home" id="add_as_home">Make Home</button>`;
+			let button__HOME = `<button data-id="${timezone.name}" title="Make this home" ${enabled} class="home" id="add_as_home">${this.labels.changeHome}</button>`;
 			let th_Name = `<th class="name"><div>${button_DELETE + button__HOME + timezone.niceName}</div></th>`;
 			let th_CurrentTime = `<th class="current_time"><div>${currentTime.hour}:${timezone.m} ${currentTime.period}</span></th>`;
 			let th_Offset = `<th class="offset"><div>${timezone.offsets.str}</div></th>`;
@@ -215,7 +223,7 @@ export default class Timezones {
 		
 		this.getList();
 		
-		options.push(`<option value="--" selected="selected">Add City</option>`);
+		options.push(`<option value="--" selected="selected">${this.labels.add.select}</option>`);
 		
 		Object.keys(this.sortedList).forEach(v => {
 			let timezone = this.sortedList[v];
@@ -225,7 +233,7 @@ export default class Timezones {
 			}
 		});
 		
-		let button__ADD = `<button type="submit" disabled="disabled" class="add" id="add_timezone_btn">Add</button>`;
+		let button__ADD = `<button type="submit" disabled="disabled" class="add" id="add_timezone_btn">${this.labels.add.submit}</button>`;
 		
 		let select = `<select id="timezone_list" name="timezone_list">${options.join('')}</select>`;
 		
