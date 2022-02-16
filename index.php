@@ -2,19 +2,23 @@
 <html>
 	<head>
 		<title>EarthTime</title>
-		<link rel="stylesheet" href="dist/style.css?<?=filemtime('dist/style.css') ?>" />
+		<link rel="stylesheet" href="dist/styles/main.css?<?=date('Y-m-d_H-i', filemtime('dist/styles/main.css')) ?>" />
 	</head>
 	<body>
 		
-		<form action="#" method="post" id="container"></form>
+		<div id="container">
+			<div class="inner" id="table_wrapper"></div>
+			
+			<form action="#" method="post" id="add_timezone"><div id="add_timezone_inner"></div></form>
+		</div>
 		
 		<script type="text/javascript">
-			window.EARTH = {
-				current: 'America/Los_Angeles',
-				list: <?=json_encode(array_map('trim', file('timezones.txt'))) ?>,
+			window.CONFIG = {
+				home: 'America/Los_Angeles',
+				locations: <?=json_encode(array_map('trim', file('timezones.txt'))) ?>,
 			};
 		</script>
-		<script src="dist/scripts.js?<?=filemtime('dist/scripts.js') ?>"></script>
+		<script src="dist/scripts/main.js?<?=date('Y-m-d_H-i-s', filemtime('dist/scripts/main.js')) ?>"></script>
 		
 	</body>
 </html>
