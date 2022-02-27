@@ -215,7 +215,7 @@ Antarctica/South_Pole
 Antarctica/Syowa
 Antarctica/Troll
 Antarctica/Vostok
-Arctic/LongyearbyenArctic/Longyearbyen
+Arctic/Longyearbyen
 Asia/Aden
 Asia/Almaty
 Asia/Amman
